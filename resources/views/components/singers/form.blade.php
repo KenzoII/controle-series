@@ -17,7 +17,7 @@
         <input type="text" class="form-control" id="name" name="name" @isset($name)value="{{ $name }}" @endisset>
     </div>
     @empty($name)
-        <button type="submit" class="btn btn-primary">Teste</button>
+        <button type="submit" class="btn btn-primary">Adicionar</button>
     @else 
         <button type="submit" class="btn btn-primary">Alterar</button>
     @endisset
