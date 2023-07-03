@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\CantoresController;
+use App\Http\Controllers\SingersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,13 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/singers');
 });
 
 Route::get('/ola', function () {
     echo "Olá";
 });
 
-Route::get('/cantores', [CantoresController::class,"index"]);
-Route::get('/cantores/create', [CantoresController::class,"create"]);
-Route::post('/cantores/salvar', [CantoresController::class,"store"]);
+Route::resource('/singers',SingersController::class)->except(['show']);
