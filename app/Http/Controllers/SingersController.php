@@ -9,7 +9,7 @@ use App\Http\Requests\SingersFormRequest;
 class SingersController extends Controller
 {
     public function index(Request $request){
-        $data = Singers::query()->orderBy('name','asc')->get();
+        $data = Singers::with(['albums'])->get();
         $mensagemSucesso = $request->session()->get('success');
         
         return view('singers.index')->with('data', $data)->with('mensagemSucesso', $mensagemSucesso);
@@ -20,7 +20,7 @@ class SingersController extends Controller
     }
 
     public function store(SingersFormRequest $request){
-
+        dd($request->all());
         $singer = Singers::create($request->all());
 
         return to_route('singers.index')->with('success', "Singer {$singer->name} created successfully");
@@ -37,7 +37,6 @@ class SingersController extends Controller
     }
 
     public function update(SingersFormRequest $request, Singers $singer){
-
         $singer->update($request->all());
         
         return to_route('singers.index')->with('success', "Singer {$singer->name} updated successfully");

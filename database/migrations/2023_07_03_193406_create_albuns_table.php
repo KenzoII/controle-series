@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('albuns', function (Blueprint $table) {
             $table->id();
+            $table->string('album_name');
+            $table->foreignId('singers_id')->constrained();
             $table->timestamps();
         });
     }
