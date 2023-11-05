@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Episodes;
+use App\Models\Series;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,9 +13,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('singers', function (Blueprint $table) {
+        Schema::create('episodes', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->integer('numberOfEpisodes');
+            $table->foreignIdFor(Series::class)->constrained();
+            $table->foreignIdFor(Episodes::class)->constrained();
             $table->timestamps();
         });
     }
@@ -23,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('singers');
+        Schema::dropIfExists('episodes');
     }
 };
