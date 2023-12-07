@@ -1,13 +1,11 @@
 <?php
 
-use App\Models\Episodes;
-use App\Models\Series;
+use App\Models\Seasons;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -16,8 +14,7 @@ return new class extends Migration
         Schema::create('episodes', function (Blueprint $table) {
             $table->id();
             $table->integer('numberOfEpisodes');
-            $table->foreignIdFor(Series::class)->constrained();
-            $table->foreignIdFor(Episodes::class)->constrained();
+            $table->foreignIdFor(Seasons::class)->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

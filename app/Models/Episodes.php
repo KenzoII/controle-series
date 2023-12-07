@@ -9,13 +9,10 @@ class Episodes extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['numberOfEpisodes'];
+
     public function seasons()
     {
         return $this->belongsTo(Seasons::class);
-    }
-
-    public function series()
-    {
-        return $this->belongsTo(Series::class);
     }
 }

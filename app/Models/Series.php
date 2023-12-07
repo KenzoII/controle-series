@@ -8,12 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Series extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'seasonsQty', 'episodes'];
 
-    public function episodes()
-    {
-        return $this->hasMany(Episodes::class);
-    }
+    protected $fillable = ['seriesName'];
 
     public function seasons()
     {
